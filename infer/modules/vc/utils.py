@@ -1,6 +1,8 @@
 import os
 
 from fairseq import checkpoint_utils
+from pathlib import Path
+_CURR_DIR = Path(__file__).parent
 
 
 def get_index_path_from_model(sid):
@@ -18,10 +20,10 @@ def get_index_path_from_model(sid):
         "",
     )
 
-
+CONFIG_PATH = _CURR_DIR / "hubert_base.pt"
 def load_hubert(config):
     models, _, _ = checkpoint_utils.load_model_ensemble_and_task(
-        ["assets/hubert/hubert_base.pt"],
+        [str(CONFIG_PATH)],
         suffix="",
     )
     hubert_model = models[0]
