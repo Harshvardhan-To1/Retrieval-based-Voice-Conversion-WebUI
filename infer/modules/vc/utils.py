@@ -3,7 +3,7 @@ import os
 from fairseq import checkpoint_utils
 from pathlib import Path
 _CURR_DIR = Path(__file__).parent
-SECOND = Path(__file__).parent[2] / "logs"
+SECOND = _CURR_DIR.parents[2] / "logs"
 
 
 def get_index_path_from_model(sid):
