@@ -64,7 +64,6 @@ def change_rms(data1, sr1, data2, sr2, rate):  # 1是输入音频，2是输出�
 
 class Pipeline(object):
     def __init__(self, tgt_sr, config):
-        logger.info(f"config_key:{config.keys()}")
         self.x_pad, self.x_query, self.x_center, self.x_max, self.is_half = (
             config.x_pad,
             config.x_query,
