@@ -3,6 +3,7 @@ import os
 from fairseq import checkpoint_utils
 from pathlib import Path
 _CURR_DIR = Path(__file__).parent
+SECOND = Path(__file__).parent[2] / "logs"
 
 
 def get_index_path_from_model(sid):
@@ -11,7 +12,7 @@ def get_index_path_from_model(sid):
             f
             for f in [
                 os.path.join(root, name)
-                for root, _, files in os.walk(os.getenv("index_root"), topdown=False)
+                for root, _, files in os.walk(SECOND, topdown=False)
                 for name in files
                 if name.endswith(".index") and "trained" not in name
             ]
