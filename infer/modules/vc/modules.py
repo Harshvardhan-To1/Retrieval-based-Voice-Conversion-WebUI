@@ -97,12 +97,17 @@ class VC:
                 "",
                 "",
             )
-        person = f'{sid}'
+        person = f'{os.getenv("weight_root")}/{sid}'
         logger.info(f"Loading: {person}")
 
         self.cpt = torch.load(person, map_location="cpu")
         self.tgt_sr = self.cpt["config"][-1]
-        self.cpt["config"][-3] = self.cpt["weight"]["emb_g.weight"].shape[0]  # n_spk
+        
+        # FIX: Convert tuple to list, modify, then keep as list since it needs to be mutable
+        config_list = list(self.cpt["config"])
+        config_list[-3] = self.cpt["weight"]["emb_g.weight"].shape[0]  # n_spk
+        self.cpt["config"] = config_list
+        
         self.if_f0 = self.cpt.get("f0", 1)
         self.version = self.cpt.get("version", "v1")
 
