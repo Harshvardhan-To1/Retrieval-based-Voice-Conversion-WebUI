@@ -21,7 +21,7 @@ def get_index_path_from_model(sid):
         "",
     )
 
-CONFIG_PATH = _CURR_DIR / "hubert_base.pt"
+CONFIG_PATH = _CURR_DIR.parents[2] / "hubert_base.pt"
 def load_hubert(config):
     models, _, _ = checkpoint_utils.load_model_ensemble_and_task(
         [str(CONFIG_PATH)],
