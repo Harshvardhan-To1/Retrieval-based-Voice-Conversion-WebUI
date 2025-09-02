@@ -6,7 +6,8 @@ from collections import OrderedDict
 import torch
 
 from i18n.i18n import I18nAuto
-
+from pathlib import Path
+_CURR_DIR = Path(__file__).parent
 i18n = I18nAuto()
 
 
@@ -42,7 +43,7 @@ def savee(ckpt, sr, if_f0, name, epoch, version, hps):
         opt["sr"] = sr
         opt["f0"] = if_f0
         opt["version"] = version
-        torch.save(opt, "assets/weights/%s.pth" % name)
+        torch.save(opt, f"{str(_CURR_DIR.parents[3])}/%s.pth")
         return "Success."
     except:
         return traceback.format_exc()
@@ -185,7 +186,7 @@ def extract_small_model(path, name, sr, if_f0, info, version):
         opt["version"] = version
         opt["sr"] = sr
         opt["f0"] = int(if_f0)
-        torch.save(opt, "assets/weights/%s.pth" % name)
+        torch.save(opt, f"{str(_CURR_DIR.parents[3])}/%s.pth" % name)
         return "Success."
     except:
         return traceback.format_exc()
