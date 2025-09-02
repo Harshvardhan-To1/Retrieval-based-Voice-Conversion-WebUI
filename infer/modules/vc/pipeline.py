@@ -17,7 +17,9 @@ import torch
 import torch.nn.functional as F
 import torchcrepe
 from scipy import signal
-
+from pathlib import Path
+_CURR_DIR = Path(__file__).parent
+RVMPE_PATH = _CURR_DIR.parents[2] / "rmvpe.pt.pt"
 now_dir = os.getcwd()
 sys.path.append(now_dir)
 
@@ -147,7 +149,7 @@ class Pipeline(object):
                     "Loading rmvpe model,%s" % "%s/rmvpe.pt" % os.environ["rmvpe_root"]
                 )
                 self.model_rmvpe = RMVPE(
-                    "%s/rmvpe.pt" % os.environ["rmvpe_root"],
+                    RVMPE_PATH,
                     is_half=self.is_half,
                     device=self.device,
                 )
