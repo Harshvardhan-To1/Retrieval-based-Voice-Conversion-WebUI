@@ -19,7 +19,7 @@ import torchcrepe
 from scipy import signal
 from pathlib import Path
 _CURR_DIR = Path(__file__).parent
-RVMPE_PATH = _CURR_DIR.parents[2] / "rmvpe.pt.pt"
+RVMPE_PATH = _CURR_DIR.parents[2] / "rmvpe.pt"
 now_dir = os.getcwd()
 sys.path.append(now_dir)
 
